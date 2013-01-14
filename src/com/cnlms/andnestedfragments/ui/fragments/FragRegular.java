@@ -11,15 +11,15 @@ import com.cnlms.andnestedfragments.R;
  * Author: Can Elmas <can.elmas@pozitron.com>
  * Date: 1/14/13 11:50 AM
  */
-public final class FragParent extends BaseFragment {
+public final class FragRegular extends BaseFragment {
 
     public static final String TAG = "Simple fragment";
 
-    private static FragParent instance;
+    private static FragRegular instance;
 
-    public static FragParent getInstance() {
+    public static FragRegular getInstance() {
 
-        if (instance == null) instance = new FragParent();
+        if (instance == null) instance = new FragRegular();
 
         return instance;
 
@@ -28,7 +28,7 @@ public final class FragParent extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        final View view = inflater.inflate(R.layout.frag_parent, container, false);
+        final View view = inflater.inflate(R.layout.frag_regular, container, false);
 
         final TextView txtView = (TextView) view.findViewById(R.id.frag_txt_view);
 
