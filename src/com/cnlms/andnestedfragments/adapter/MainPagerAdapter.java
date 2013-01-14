@@ -36,7 +36,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
 
-        return position == 0 ? "A" : "B";
+        return position == 0 ? "Regular" : "Can go Nesty";
 
     }
 
