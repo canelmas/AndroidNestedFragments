@@ -1,4 +1,5 @@
 AndroidNestedFragments
 ======================
 
-Android Nested Fragments Tutorial
+Just a simple android app that covers Jelly Bean's Nested Fragment functionality.
+

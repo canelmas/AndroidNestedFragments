@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
-import com.cnlms.andnestedfragments.ui.fragments.FragParent;
+import com.cnlms.andnestedfragments.ui.fragments.FragRegular;
 import com.cnlms.andnestedfragments.ui.fragments.FragWrapper;
 
 /**
@@ -23,7 +23,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         return position == 0 ?
-                FragParent.getInstance() :
+                FragRegular.getInstance() :
                 FragWrapper.getInstance();
 
     }

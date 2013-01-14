@@ -13,7 +13,7 @@ import com.cnlms.andnestedfragments.R;
  */
 public final class FragRegular extends BaseFragment {
 
-    public static final String TAG = "Simple fragment";
+    public static final String TAG = "Regular Fragment";
 
     private static FragRegular instance;
 
