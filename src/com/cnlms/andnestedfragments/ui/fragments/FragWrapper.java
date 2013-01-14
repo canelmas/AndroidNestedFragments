@@ -91,7 +91,7 @@ public final class FragWrapper extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
 
         /**
-         *  Add Initial Fragment
+         *  Add Initial Child Fragment
          */
         addChildFragment(
                 FragChild.newInstance(fragCount),

@@ -34,7 +34,7 @@ public final class FragChild extends Fragment {
 
         super.onCreate(savedInstanceState);
 
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
 
         if (bundle != null) {
 
@@ -47,11 +47,11 @@ public final class FragChild extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.frag_child, container, false);
+        final View view = inflater.inflate(R.layout.frag_child, container, false);
 
         if (initialText != null) {
 
-            TextView txtView = (TextView) view.findViewById(R.id.frag_child_txt);
+            final TextView txtView = (TextView) view.findViewById(R.id.frag_child_txt);
 
             txtView.setText(initialText);
 

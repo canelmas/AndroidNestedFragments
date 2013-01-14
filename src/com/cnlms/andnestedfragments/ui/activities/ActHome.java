@@ -11,10 +11,20 @@ import com.cnlms.andnestedfragments.ui.fragments.BaseFragment;
 
 public final class ActHome extends FragmentActivity implements ViewPager.OnPageChangeListener, ActionBar.TabListener {
 
+    /**
+     *  Action bar.
+     *  Not the backward compatible one.
+     */
     private ActionBar actionBar;
 
+    /**
+     *  Fragment Pager Adapter
+     */
     private MainPagerAdapter adapter;
 
+    /**
+     *  suppor library View Pager
+     */
     private ViewPager viewPager;
 
     @Override
@@ -45,36 +55,13 @@ public final class ActHome extends FragmentActivity implements ViewPager.OnPageC
     }
 
     @Override
-    public void onPageScrolled(int i, float v, int i2) {
-
-    }
-
-    @Override
     public void onPageSelected(int position) {
-
         actionBar.setSelectedNavigationItem(position);
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int i) {
-
     }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-
         viewPager.setCurrentItem(tab.getPosition());
-
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
-
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-
     }
 
     @Override
@@ -82,8 +69,8 @@ public final class ActHome extends FragmentActivity implements ViewPager.OnPageC
 
         /**
          *  Allow Fragments to consume back press
+         *
          */
-
         final int currentFragmentIndex = viewPager.getCurrentItem();
 
         final boolean consumed = ((BaseFragment) adapter.getItem(currentFragmentIndex)).backPressed();
@@ -93,6 +80,23 @@ public final class ActHome extends FragmentActivity implements ViewPager.OnPageC
             super.onBackPressed();
 
         }
+
+    }
+
+    @Override
+    public void onPageScrolled(int i, float v, int i2) {
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int i) {
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
     }
 }
