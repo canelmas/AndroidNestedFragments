@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<style name="Theme.b4fthemeaction" parent="@style/Theme.">
+
+        <item name="android:windowBackground">@color/white</item>
+
+        <item name="actionBarItemBackground">@drawable/selectable_background_b4fthemeaction</item>
+        <item name="popupMenuStyle">@style/b4fthemeaction_PopupMenu</item>
+        <item name="dropDownListViewStyle">@style/b4fthemeaction_DropDownListView</item>
+        <item name="actionBarTabStyle">@style/b4fthemeaction_ActionBarTabStyle</item>
+        <item name="actionDropDownStyle">@style/b4fthemeaction_DropDownNav</item>
+        <item name="actionBarStyle">@style/b4fthemeaction_solid_ActionBar</item>
+
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_b4fthemeaction</item>
+        <item name="android:popupMenuStyle">@style/b4fthemeaction_PopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/b4fthemeaction_DropDownListView</item>
+        <item name="android:actionBarTabStyle">@style/b4fthemeaction_ActionBarTabStyle</item>
+        <item name="android:actionDropDownStyle">@style/b4fthemeaction_DropDownNav</item>
+        <item name="android:actionBarStyle">@style/b4fthemeaction_solid_ActionBar</item>
+        <item name="android:panelBackground">@drawable/menu_hardkey_panel_b4fthemeaction</item>
+
+    </style>-->
+
+</resources>
