@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
+import com.cnlms.andnestedfragments.ui.fragments.FragBackStackHandler;
 import com.cnlms.andnestedfragments.ui.fragments.FragRegular;
 import com.cnlms.andnestedfragments.ui.fragments.FragWrapper;
 
@@ -15,16 +16,32 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
     private static final int NUM_OF_PAGE = 2;
 
+    private FragmentManager fm;
+
     public MainPagerAdapter(FragmentManager fm) {
+
         super(fm);
+
+        this.fm = fm;
+
     }
 
     @Override
     public Fragment getItem(int position) {
 
         return position == 0 ?
+                new FragRegular() :
+                new FragWrapper();
+
+        /*return position == 0 ?
                 FragRegular.getInstance() :
-                FragWrapper.getInstance();
+                FragWrapper.getInstance();*/
+
+    }
+
+    public String getFragmentTag(int position) {
+
+        return position == 0 ? FragRegular.TAG : FragWrapper.TAG;
 
     }
 
@@ -49,6 +66,14 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
                 .beginTransaction()
                 .remove(((Fragment) object))
                 .commit();
+
+    }
+
+    public boolean onBackPressed(final int currentPagePosition) {
+
+        final String currentFragmentTag = getFragmentTag(currentPagePosition);
+
+        return FragBackStackHandler.getInstance().popBackStackEntry(currentFragmentTag);
 
     }
 }

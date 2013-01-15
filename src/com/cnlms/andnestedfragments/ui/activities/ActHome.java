@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import com.cnlms.andnestedfragments.R;
 import com.cnlms.andnestedfragments.adapter.MainPagerAdapter;
-import com.cnlms.andnestedfragments.ui.fragments.BaseFragment;
 
 public final class ActHome extends FragmentActivity implements ViewPager.OnPageChangeListener, ActionBar.TabListener {
 
@@ -23,7 +22,7 @@ public final class ActHome extends FragmentActivity implements ViewPager.OnPageC
     private MainPagerAdapter adapter;
 
     /**
-     *  suppor library View Pager
+     *  Support library View Pager
      */
     private ViewPager viewPager;
 
@@ -68,14 +67,9 @@ public final class ActHome extends FragmentActivity implements ViewPager.OnPageC
     public void onBackPressed() {
 
         /**
-         *  Allow Fragments to consume back press
-         *
+         *  Propagate back press to the fragments first
          */
-        final int currentFragmentIndex = viewPager.getCurrentItem();
-
-        final boolean consumed = ((BaseFragment) adapter.getItem(currentFragmentIndex)).backPressed();
-
-        if (!consumed) {
+        if (!adapter.onBackPressed(viewPager.getCurrentItem())) {
 
             super.onBackPressed();
 

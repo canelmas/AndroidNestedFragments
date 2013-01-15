@@ -9,13 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.cnlms.andnestedfragments.R;
 
-import java.util.Stack;
-
 /**
  * Author: Can Elmas <can.elmas@pozitron.com>
  * Date: 1/14/13 11:50 AM
  */
-public final class FragWrapper extends BaseFragment {
+public final class FragWrapper extends Fragment {
 
     /**
      *
@@ -28,10 +26,7 @@ public final class FragWrapper extends BaseFragment {
      *
      */
 
-    /**
-     *  Holds back stacked fragment tags
-     */
-    private Stack<String> backStack;
+    public static final String TAG = "FragWrapper";
 
     /**
      *  Child Fragment Manager
@@ -43,20 +38,6 @@ public final class FragWrapper extends BaseFragment {
      */
     private int fragCount = 1;
 
-
-    private static FragWrapper instance;
-
-    public static FragWrapper getInstance() {
-
-        if (instance == null) {
-
-            instance = new FragWrapper();
-
-        }
-
-        return instance;
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -95,34 +76,47 @@ public final class FragWrapper extends BaseFragment {
          */
         addChildFragment(
                 FragChild.newInstance(fragCount),
-                String.valueOf(fragCount),
+                TAG,
                 false
         );
 
     }
+
+    private String firstFragmentTag;
 
     private void addChildFragment(final Fragment fragment, final String fragmentTag, final boolean addToBackStack) {
 
         /**
          *  initialize child fragment manager
          */
-        if (fm == null) fm = getChildFragmentManager();
+        if (fm == null) {
+
+            fm = getChildFragmentManager();
+
+            firstFragmentTag = fragmentTag;
+
+            //   this statement should be called only for the first fragment in theory
+            FragBackStackHandler.getInstance().addBackStackObserver(firstFragmentTag, fm);
+
+        }
 
 
         /**
          *  Starts a new transaction
          */
-        FragmentTransaction ft = fm.beginTransaction();
+        final FragmentTransaction ft  = FragBackStackHandler.getInstance().newTransaction(firstFragmentTag);
 
 
         /**
-         *  Hide lastly added fragment
+         *  todo : add custom transition animation here..
          */
-        if (backStack != null  && !backStack.isEmpty()) {
 
-            ft.hide(fm.findFragmentByTag(backStack.peek()));
 
-        }
+        /**
+         *  Hide current fragment for the this wrapper's back stack
+         */
+        FragBackStackHandler.getInstance().hideCurrentFragment(firstFragmentTag, ft);
+
 
         /**
          *  Add new fragment
@@ -146,36 +140,10 @@ public final class FragWrapper extends BaseFragment {
 
 
         /**
-         * Save fragment tag
+         * Save fragment tag as a new back stack entry for this wrapper
          */
-        if (backStack == null) backStack = new Stack<String>();
-
-        backStack.push(fragmentTag);
+        FragBackStackHandler.getInstance().pushBackStackEntry(firstFragmentTag, fragmentTag);
 
     }
 
-    public boolean popFragment() {
-
-        /**
-         *  Allow this fragment to consume the back button click
-         */
-
-        if (backStack != null   && !backStack.isEmpty()) {
-
-            backStack.pop();
-
-            fragCount-=1;
-
-        }
-
-        return fm != null && fm.popBackStackImmediate();
-
-    }
-
-    @Override
-    public boolean backPressed() {
-
-        return popFragment();
-
-    }
 }

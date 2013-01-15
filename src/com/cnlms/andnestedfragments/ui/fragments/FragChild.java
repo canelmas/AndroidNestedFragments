@@ -51,9 +51,7 @@ public final class FragChild extends Fragment {
 
         if (initialText != null) {
 
-            final TextView txtView = (TextView) view.findViewById(R.id.frag_child_txt);
-
-            txtView.setText(initialText);
+            ((TextView) view.findViewById(R.id.frag_child_txt)).setText(initialText);
 
         }
 
